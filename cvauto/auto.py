@@ -53,10 +53,20 @@ class Auto(position.Position):
 
     def waitShow(self, key: str, min_sim=0.5, delay=10):
         """
-            等待key区域显示，最多等待dalay秒
+            等待key区域显示，最多等待dalay秒，delay为-1时为一直等待
         """
         start = time.time()
-        while time.time() - start <= delay:
+        while delay == -1 or time.time() - start <= delay:
             if self.isShow(key, min_sim):
+                return True
+        return False
+
+    def waitHide(self, key: str, min_sim=0.5, delay=10):
+        '''
+            等待key消失
+        '''
+        start = time.time()
+        while delay == -1 or time.time() - start <= delay:
+            if not self.isShow(key, min_sim):
                 return True
         return False
