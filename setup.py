@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="cvauto",
-    version="0.0.2",
+    version="0.0.3",
     keywords=["automation", "GUI", "opencv", "rpa"],
     description="It's a gui automation pkg, and base on opencv, just a simple picture match.",
     license="MIT",

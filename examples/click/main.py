@@ -1,7 +1,12 @@
+from cvauto.position import KeyType
 import cvauto.auto as auto
+keys = []
+keys.append(KeyType("5.png"))
+keys.append(KeyType("+.png"))
+keys.append(KeyType("7.png"))
+keys.append(KeyType("=.png"))
 
 a = auto.Auto()
-a.click("5.png")
-a.click("+.png")
-a.click("7.png")
-a.click("=.png")
+
+for i in keys:
+    a.click(i)
