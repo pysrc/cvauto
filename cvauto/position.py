@@ -30,7 +30,7 @@ class Position(object):
     def getPosition(self, key: KeyType, src=None, debug=False):
         '''
             返回图标在图像上的位置以及相似度
-            @key Key类型
+            @key KeyType类型
             @src 如果有，就从该图片上找位置
             @debug 如果为True则显示点击位置等信息
         '''

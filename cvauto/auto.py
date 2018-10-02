@@ -8,12 +8,6 @@ class Auto(Position):
     def __init__(self):
         super(Auto, self).__init__()
 
-    def _getKeyTypes(self, key):
-        if type(key) == KeyType:
-            return key.keysrc, key.dx, key.dy
-        else:
-            return key
-
     def _mouse(self, func, key: KeyType, min_sim=0.5, **kwargs):
         poss = self.getPosition(key)
         if poss is None or poss[1] < min_sim:
