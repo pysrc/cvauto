@@ -42,8 +42,16 @@ class Generate(object):
         if not os.path.exists("keys.py"):
             with open("keys.py", 'a') as f:
                 f.write("from cvauto.position import KeyType\n\nkeys = {}\n")
+        else:
+            from keys import keys
         cv2.rectangle(self._im, (self._posr[0][0], self._posr[0][1]), (
             self._posr[0][0] + self._ico.shape[1], self._posr[0][1] + self._ico.shape[0]), (0, 0, 255), 1)
+        x, y = self._posr[0][0], self._posr[0][1]
+        for key in keys:
+            pos = (x + keys[key].dx, y + keys[key].dy)
+            cv2.circle(self._im, pos, 5, (0, 0, 255), -1)
+            cv2.putText(self._im, key, pos,
+                        cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 1)
 
     def _click_event(self, event, x, y, flags, *param):
         if event == cv2.EVENT_LBUTTONDOWN:
@@ -65,5 +73,4 @@ class Generate(object):
         cv2.imshow(self._key.keysrc, self._im)
         cv2.setMouseCallback(self._key.keysrc, self._click_event)
         cv2.waitKey(0)
-        cv2.imwrite("flag_" + self._key.keysrc, self._im)
         cv2.destroyAllWindows()
